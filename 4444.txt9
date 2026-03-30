@@ -1,0 +1,90 @@
+# Creating ERD_Purchase_Modules.md with purchase module ERD content in Markdown format
+import os
+
+content = """# ERD for Purchase Modules (Suppliers, Purchase Orders, Supplier Bills, Stock Movements)
+
+## Suppliers
+- SupplierID (PK)
+- SupplierName
+- Phone
+- Address
+- Email
+- OpeningBalance
+- Notes
+- CreatedAt
+
+## Purchase Orders
+### PurchaseOrders
+- POID (PK)
+- SupplierID (FK → Suppliers.SupplierID)
+- PODate
+- Notes
+- Status
+
+### PurchaseOrderItems
+- POItemID (PK)
+- POID (FK → PurchaseOrders.POID)
+- ItemID (FK → Products.ItemID)
+- Qty
+- CostPrice
+
+## Supplier Bills
+### SupplierBills
+- BillID (PK)
+- SupplierID (FK → Suppliers.SupplierID)
+- BillDate
+- SupplierBillNo
+- Notes
+
+### SupplierBillItems
+- BillItemID (PK)
+- BillID (FK → SupplierBills.BillID)
+- ItemID (FK → Products.ItemID)
+- Qty
+- CostPrice
+- Total
+
+## Stock Movements
+- MovementID (PK)
+- ItemID (FK → Products.ItemID)
+- QtyChange
+- MovementType
+- ReferenceID
+- CreatedAt
+
+## ERD Text Diagram
+Suppliers
+│
+├── SupplierID (PK)
+│
+├── PurchaseOrders
+│     ├── POID (PK)
+│     ├── SupplierID (FK → Suppliers)
+│     └── PurchaseOrderItems
+│           ├── POItemID (PK)
+│           ├── POID (FK → PurchaseOrders)
+│           └── ItemID (FK → Products)
+│
+└── SupplierBills
+      ├── BillID (PK)
+      ├── SupplierID (FK → Suppliers)
+      └── SupplierBillItems
+            ├── BillItemID (PK)
+            ├── BillID (FK → SupplierBills)
+            └── ItemID (FK → Products)
+
+Products
+│
+└── StockMovements
+      ├── MovementID (PK)
+      ├── ItemID (FK → Products)
+      ├── QtyChange
+      ├── MovementType
+      └── ReferenceID
+"""
+
+output_path = "/mnt/data/ERD_Purchase_Modules.md"
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(content)
+
+print(f"Markdown file 'ERD_Purchase_Modules.md' created successfully at {output_path}")
