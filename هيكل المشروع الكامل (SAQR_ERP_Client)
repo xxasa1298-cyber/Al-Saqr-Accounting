@@ -1,0 +1,18 @@
+SAQR_ERP_Client/
+│
+├── Program.cs
+├── MainForm.cs
+├── MainForm.Designer.cs
+├── MainForm.resx
+│
+├── ApiService.cs
+│
+├── UserControlDashboard.cs
+├── UserControlDashboard.Designer.cs
+├── UserControlDashboard.resx
+│
+├── UserControlUsers.cs
+├── UserControlUsers.Designer.cs
+├── UserControlUsers.resx
+│
+└── SAQR_ERP_Client.csproj
